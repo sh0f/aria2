@@ -1,7 +1,9 @@
 FROM alpine
 ENV PASSWORD= \
     ARGS=
-RUN apk add --no-cache aria2
+RUN apk add --no-cache aria2 \
+    && mkdir /root/.aria2/session \
+    && touch /root/.aria2/session/aria2.session
 VOLUME /data
 COPY aria2.conf /root/.aria2/aria2.conf
 CMD exec aria2c \
